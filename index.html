@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>USARION-Landing-Page</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html{
+            overflow-x: clip;
+        }
+        header{
+            min-height: 100vh;
+            background: url('./assets/images/banner-background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        header img{
+            display: block;
+            width: 100%;
+            /* clip-path: inset(107px 32px 90vh 65vw round 20px); */
+        }
+        .spacer{
+            height: 100vh;
+            background-color: #000000;
+        }
+        .section{
+            padding-block: 10rem;
+            padding-inline: 5rem;
+            min-height: 100vh;
+        }
+        #stacked-cards-section{
+            background-color: #121720;
+        }
+        .stacked-cards-wrapper{
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: 25rem;
+            gap: 24px;
+        }
+        .stacked-card{
+            position: sticky;
+            left: 0;
+            padding: 5rem 2rem 10rem;
+            background-color: #F5F9FF;
+            box-shadow: -20px 0 48px rgba(0, 0, 0, 0.10);
+            border-radius: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            <header id="header">
+                <img id="banner-image" src="./assets/images/banner.jpg" alt="">
+            </header>
+            <div class="spacer"></div>
+            <section class="section" id="stacked-cards-section">
+                <div class="stacked-cards-wrapper">
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                    <div class="stacked-card">
+                        <h2>Card title</h2>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, distinctio.</p>
+                    </div>
+                </div>
+            </section>
+            <div class="spacer"></div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- <script src="https://assets.website-files.com/62996528a0c05f3f57f2d85b/js/gsap-scrollsmoother.7f033afae.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/ScrollTrigger.min.js"></script>
+    <script src="https://developer-zahid.github.io/smooth-scroll-plugin/script.min.js"></script>
+
+    <script>
+        // // Set the width and height
+        // const width = 560;
+        // const height = 710;
+
+        // const viewportHeight = window.innerHeight;
+        // const viewportWidth = window.innerWidth;
+
+        // // Set the top, right, and bottom offsets
+        // const topOffset = 107;
+        // const rightOffset = 32;
+        // const bottomOffset = 32;
+        // const leftOffset = window.innerWidth - width - rightOffset;
+
+        // const visibleHeight = viewportHeight - topOffset - bottomOffset;
+
+
+
+        const targetElement = document.getElementById('banner-image');
+
+        // Set the actual height of the element
+        const elementHeight = targetElement.clientHeight;
+
+        console.log(targetElement);
+
+        // Set the offsets
+        const topOffset = 107;
+        const rightOffset = 32;
+        const bottomOffset = 32;
+        const elementWidth = 560;
+
+        // Calculate the viewport height
+        const viewportHeight = window.innerHeight;
+        const viewportWidth = window.innerWidth;
+
+        // Calculate the insets
+        const visibleHeight = viewportHeight - topOffset - bottomOffset;
+        const topInset = topOffset;
+        const rightInset = rightOffset;
+        const bottomInset = elementHeight - visibleHeight - topInset;
+        const leftInset = viewportWidth - elementWidth - rightInset;
+
+
+        gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+        ScrollSmoother.create({
+            smooth: 1,
+            effects: true,
+        });
+        const bannerTimeline = gsap.timeline({
+            scrollTrigger: {
+                trigger: "#header",
+                start: "top",
+                end: "bottom",
+                scrub: 2,
+                pin: true,
+                markers: true
+            }
+        })
+        .fromTo(
+            $('#banner-image'),
+            {
+                'clip-path': `inset(${topInset}px ${rightInset}px ${bottomInset}px ${leftInset}px round 24px)`
+            },
+            {
+                'clip-path': 'inset(0px 0px 0px 0px round 0px)'
+            }
+        );
+
+        const panels = gsap.utils.toArray("#stacked-cards-section .stacked-card");
+        gsap.to(panels, {
+            xPercent: (i) => (-80 * i),
+            duration: (i) => (1 * i),
+            ease: "none", // <-- IMPORTANT!
+            scrollTrigger: {
+                trigger: "#stacked-cards-section",
+                pin: true,
+                markers: true,
+                scrub: 2,
+                end: "+=3000 bottom"
+            }
+        });
+    </script>
+</body>
+</html>
